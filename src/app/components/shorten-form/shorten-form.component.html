@@ -1,0 +1,36 @@
+ <form [formGroup]="urlForm" (ngSubmit)="onSubmit()">
+   <div class="row">
+     <div class="col-md-10">
+       <input class="form-control form-control-lg" formControlName="url" type="text" placeholder="Paste Link">
+     </div>
+     <div class="col-md-2">
+       <input type="submit" class="btn btn-success btn-lg" [disabled]="urlForm.invalid" value="Shorten" />
+     </div>
+
+
+
+   </div>
+ </form>
+ <div class="row">
+   <div class="col-md-10">
+     <div class="card bg-white mt-3">
+       <div class="card-body">
+         <div class="row">
+           <div class="col-md-7">
+             <p>{{originalUrl}}</p>
+           </div>
+
+           <div class="col-md-3">
+             <p>{{shortUrl}}</p>
+           </div>
+           <div class="col-md-2">
+             <button type="submit" class="btn btn-info btn-lg" (cbOnSuccess)="copied()" ngxClipboard
+               [cbContent]=shortUrl>Copy</button>
+           </div>
+         </div>
+       </div>
+     </div>
+
+     <div class="col-md-2"></div>
+   </div>
+ </div>
