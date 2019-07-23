@@ -10,6 +10,7 @@ import { ShortenFormComponent } from './components/shorten-form/shorten-form.com
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ClipboardModule } from 'ngx-clipboard';
+import { LinkComponent } from './components/link/link.component';
 
 const appRoutes: Routes = [
 	{ path: 'stats', component: StatsComponent, data: { title: 'statistics' } },
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
 		HomeComponent,
 		NotFoundComponent,
 		NavBarComponent,
-		ShortenFormComponent
+		ShortenFormComponent,
+		LinkComponent
 	],
 	imports: [
 		BrowserModule,
