@@ -1,1 +1,36 @@
-<p>stats works!</p>
+<div *ngIf="links.length>0; else noLinks">
+
+  <div class="card mt-3">
+    <div class="card-body">
+      <table class="table table-stripped">
+        <thead>
+          <tr>
+            <th>Original</th>
+            <th>Short URL</th>
+            <th>Visits</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of links">
+
+          <tr>
+            <td>
+              {{item.original}}
+            </td>
+            <td>{{item.short}}</td>
+            <td>{{item.visits}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #noLinks>
+  <div class="container jumbotron mt-3">
+
+    <p>No Links Yet</p>
+
+
+
+  </div>
+</ng-template>
