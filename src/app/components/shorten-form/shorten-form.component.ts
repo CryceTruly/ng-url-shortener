@@ -9,9 +9,10 @@ import { ShortenService } from 'src/app/services/shorten.service';
   styleUrls: ['./shorten-form.component.scss']
 })
 export class ShortenFormComponent implements OnInit {
-  isLoading:boolean=false
+  hasShortened:boolean=false
   originalUrl:string="";
   shortUrl:string="";
+  error:string;
 
   urlForm = this.fb.group({
     url: ['', Validators.required]
@@ -26,17 +27,24 @@ export class ShortenFormComponent implements OnInit {
   }
 
   onSubmit(){
-    this.isLoading=true
    const link={
-     "original_url":this.urlForm.value
+     "original_url":this.urlForm.value.url
 
    }
 
    this.linkService.addLink(link).subscribe(data=>{
-     console.log(data);
+     this.hasShortened=true
      this.originalUrl=data['original_url']
      this.shortUrl=data['new_link']
-     this.isLoading=false
+
+
+   },err=>{
+     setTimeout(() => {
+    this.error=""
+     }, 3000);
+    this.error=(err['Error'])
+    this.hasShortened=false
+
 
    })
 
