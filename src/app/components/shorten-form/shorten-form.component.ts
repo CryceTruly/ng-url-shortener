@@ -1,13 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder,FormControl } from '@angular/forms';
+import {FormBuilder, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { forbiddenNameValidator } from './urlvalidator';
 import { ShortenService } from 'src/app/services/shorten.service';
+import { ActivatedRoute } from '@angular/router';
+
+
+function isValidURL(): ValidatorFn {
+  return (c: AbstractControl): { [key: string]: boolean } | null => {
+    console.log(c);
+
+    if (c.value=='www.google.com') {
+      return { 'url': true };
+    }
+    return null;
+  };
+}
 @Component({
   selector: 'app-shorten-form',
   templateUrl: './shorten-form.component.html',
   styleUrls: ['./shorten-form.component.scss']
 })
+
+
 export class ShortenFormComponent implements OnInit {
   hasShortened:boolean=false
   originalUrl:string="";
@@ -15,17 +29,16 @@ export class ShortenFormComponent implements OnInit {
   error:string;
 
   urlForm = this.fb.group({
-    url: ['', Validators.required]
+    url: ['',isValidURL]
   }
    )
 
 
-  constructor(private fb: FormBuilder,private linkService:ShortenService) { }
+  constructor(private router:ActivatedRoute, private fb:FormBuilder, private linkService:ShortenService) { }
 
   ngOnInit() {
 
   }
-
   onSubmit(){
    const link={
      "original_url":this.urlForm.value.url
@@ -39,15 +52,18 @@ export class ShortenFormComponent implements OnInit {
 
 
    },err=>{
+
      setTimeout(() => {
     this.error=""
      }, 3000);
+     if(err['type']==='error'){
+       this.error='Something went wrong'
+     }
     this.error=(err['Error'])
     this.hasShortened=false
 
 
    })
-
   }
 copied(){
 alert("Saved to Clipboard")

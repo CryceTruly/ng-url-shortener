@@ -6,7 +6,8 @@
 
      </div>
      <div class="col-md-2">
-       <input type="submit" class="btn btn-success btn-lg" [disabled]="urlForm.invalid" value="Shorten" />
+       <input type="submit" class="btn btn-success btn-lg" [disabled]="urlForm.invalid"
+         [ngStyle]="urlForm.invalid && {'backgroundColor': '#333'} " value="Shorten" />
      </div>
 
 
@@ -25,7 +26,7 @@
              <p>{{shortUrl}}</p>
            </div>
            <div class="col-md-2">
-             <button type="submit" class="btn btn-info btn-lg" (cbOnSuccess)="copied()" ngxClipboard
+             <button type="submit" class="btn btn-info btn-lg" (cbOnSuccess)=" copied()" ngxClipboard
                [cbContent]=shortUrl>Copy</button>
            </div>
          </div>

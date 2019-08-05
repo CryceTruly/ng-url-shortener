@@ -29,7 +29,7 @@ const appRoutes: Routes = [
 		LinkComponent
 	],
 	imports: [
-		BrowserModule,
+		BrowserModule.withServerTransition({ appId: 'serverApp' }),
 		RouterModule.forRoot(
 			appRoutes,
 			{ enableTracing: true } // <-- debugging purposes only
