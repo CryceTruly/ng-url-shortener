@@ -1,6 +1,4 @@
-<div *ngIf="links.length>0; else noLinks">
-
-  <div class="card mt-3">
+ <div class="card mt-3">
     <div class="card-body">
       <table class="table table-stripped">
         <thead>
@@ -10,7 +8,7 @@
             <th>Visits</th>
           </tr>
         </thead>
-        <tbody *ngFor="let item of links">
+        <tbody *ngFor="let item of links | async">
 
           <tr>
             <td>
@@ -23,7 +21,7 @@
       </table>
     </div>
   </div>
-</div>
+
 
 <ng-template #noLinks>
   <div class="container jumbotron mt-3">
