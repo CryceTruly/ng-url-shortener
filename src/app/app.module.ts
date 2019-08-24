@@ -13,33 +13,33 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { LinkComponent } from './components/link/link.component';
 
 const appRoutes: Routes = [
-	{ path: 'stats', component: StatsComponent, data: { title: 'statistics' } },
-	{ path: '', component: HomeComponent, data: { title: 'welcome' } },
-	{ path: '**', component: NotFoundComponent }
+{ path: 'stats', component: StatsComponent, data: { title: 'statistics' } },
+{ path: '', component: HomeComponent, data: { title: 'welcome' } },
+{ path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		StatsComponent,
-		HomeComponent,
-		NotFoundComponent,
-		NavBarComponent,
-		ShortenFormComponent,
-		LinkComponent
+declarations: [
+  AppComponent,
+  StatsComponent,
+  HomeComponent,
+  NotFoundComponent,
+  NavBarComponent,
+  ShortenFormComponent,
+  LinkComponent
 	],
-	imports: [
-		BrowserModule.withServerTransition({ appId: 'serverApp' }),
-		RouterModule.forRoot(
-			appRoutes,
-			{ enableTracing: true } // <-- debugging purposes only
-		),
-		FormsModule,
-		ReactiveFormsModule,
-		HttpClientModule,
-		ClipboardModule
-	],
-	providers: [],
-	bootstrap: [ AppComponent ]
+imports: [
+  BrowserModule.withServerTransition({ appId: 'serverApp' }),
+  RouterModule.forRoot(
+    appRoutes,
+    { enableTracing: true } // <-- debugging purposes only
+  ),
+  FormsModule,
+  ReactiveFormsModule,
+  HttpClientModule,
+  ClipboardModule
+],
+providers: [],
+bootstrap: [ AppComponent ]
 })
 export class AppModule {}

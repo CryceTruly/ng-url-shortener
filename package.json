@@ -38,6 +38,7 @@
     "valid-url": "^1.0.9",
     "zone.js": "~0.9.1"
   },
+
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.801.1",
     "@angular/cli": "~8.1.1",
