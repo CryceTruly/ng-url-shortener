@@ -3,7 +3,12 @@
      <div class="col-md-10">
        <input class="form-control form-control-lg" formControlName="url" type="text" placeholder="Paste Link">
        <p class="text text-warning" *ngIf="error && error.length>0">{{error}}</p>
-
+       <div *ngIf="urlForm.get('url').touched && urlForm.get('url').errors?.required">
+         <p class="text text-warning">Please add a url you want to shorten</p>
+       </div>
+       <div *ngIf="urlForm.get('url').touched && urlForm.get('url').errors?.isValid">
+         <p class="text text-warning">This Link does not look Valid</p>
+       </div>
      </div>
      <div class="col-md-2">
        <input type="submit" class="btn btn-success btn-lg" [disabled]="urlForm.invalid"

@@ -21,7 +21,7 @@ export class StatsComponent implements OnInit {
     this.links = this.http.getStats().pipe(map(data => data.stats));
   }
   private setPageMeta() {
-    this.titleService.setTitle('Home| URL Shortener, Custom Links & Link Analytics');
+    this.titleService.setTitle('All Link statistics| URL Shortener, Custom Links & Link Analytics');
     this.metaService.addTags(
       [
         // Open Graph Data
