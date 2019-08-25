@@ -4,21 +4,15 @@ import { Observable } from 'rxjs';
 import { Link } from '../models/Link';
 
 @Injectable({
-	providedIn: 'root'
+  providedIn: 'root'
 })
 export class StatsService {
-	httpOptions = {
-		headers: new HttpHeaders({
-			'Content-Type': 'Application/json'
-		})
-  };
 
-
-	constructor(private http:HttpClient) {
+  constructor(private http: HttpClient) {
 
   }
 
-  getStats():Observable<Link>{
-    return this.http.get("http://127.0.0.1:5000/stats");
+  getStats(): Observable<Link >{
+    return this.http.get('http://127.0.0.1:5000/stats');
   }
 }
